@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useState, useRef } from 'react';
 import { DefaultToastOptions, Toast, ToastType } from './types';
 
 const TOAST_LIMIT = 20;
@@ -146,7 +146,7 @@ export const useStore = (toastOptions: DefaultToastOptions = {}): State => {
   const initial = useRef(memoryState);
 
   // TODO: Switch to useSyncExternalStore when targeting React 18+
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (initial.current !== memoryState) {
       setState(memoryState);
     }
